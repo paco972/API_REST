@@ -1,3 +1,0 @@
-RewriteEngine On # Activer le module Rewrite
-RewriteRule ^etudiants/?$ etudiants.php [L]
-RewriteRule ^etudiant/([^/.]+)?$ etudiants.php?id=$1 [L]
