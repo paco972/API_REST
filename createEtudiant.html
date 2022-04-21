@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Nouvel étudiant</title>
+    </head>
+    <body>
+        <p>
+            Nom :
+            <input type="text" name="nom"/>
+        </p>
+        <p>
+            Prénom :
+            <input type="text" name="prenom"/>
+        </p>
+        <p>
+            Téléphone :
+            <input type="text" name="telephone"/>
+        </p>
+        <p>
+            Pseudo :
+            <input type="text" name="pseudo" />
+        </p>
+        <p>
+            <button onclick="createEtudiant()">Enregistrer</button> 
+        </p>
+
+        <script>
+            function createEtudiant() {
+                xhr2 = new XMLHttpRequest();
+                xhr2.open("POST",'api/etudiants.php', true);
+                xhr2.setRequestHeader('Content-Type', 'application/json');
+                var json = {'nom':"",'prenom':"",'tel':"",'pseudo':""};
+                json['nom'] = document.getElementsByName('nom')[0].value;
+                json['prenom'] = document.getElementsByName('prenom')[0].value;
+                json['tel'] = document.getElementsByName('telephone')[0].value;
+                json['pseudo'] = document.getElementsByName('pseudo')[0].value;
+                console.log(JSON.stringify(json))
+                xhr2.send(JSON.stringify(json));
+                xhr2.onload = function () {
+                    console.log(xhr2.responseText);
+                }
+                window.open('SN1.html','_self');
+            }
+        </script>
+    </body>
+</html>
